@@ -1,0 +1,26 @@
+iberia:
+  target: "{{ env_var('PROFILE_TARGET') }}"
+  outputs:
+    prod:
+      type: redshift
+      threads: 1
+      host: "{{ env_var('REDSHIFT_HOST') }}"
+      port: "{{ env_var('REDSHIFT_PORT') | as_number }}"
+      user: "{{ env_var('REDSHIFT_USERNAME') }}"
+      pass: "{{ env_var('REDSHIFT_PASSWORD') }}"
+      dbname: "{{ env_var('REDSHIFT_DBNAME') }}"
+      schema: "{{ env_var('REDSHIFT_SCHEMA') }}"
+
+default:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: "{{ env_var('POSTGRES_USER') }}"
+      pass: "{{ env_var('POSTGRES_PASSWORD') }}"
+      port: 54321
+      dbname: postgres
+      schema: test
+      threads: 1
+      keepalives_idle: 0 # default 0, indicating the system default
