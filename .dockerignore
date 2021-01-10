@@ -1,0 +1,8 @@
+
+target/
+logs/
+docker/
+prd.properties
+sbx.properties
+dev.properties
+.properties
